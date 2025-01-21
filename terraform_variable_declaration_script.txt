@@ -1,0 +1,39 @@
+provider.tf
+
+provider "aws" {
+  region     = "ap-south-1"
+  access_key = "AKIAWOAVSUU7MZO24GGV"
+  secret_key = "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"
+}
+
+-----------------------
+vars.tf
+
+
+variable "ami" {
+    description = "amazon machine image"
+    default = "ami-0fd05997b4dff7aac"
+}
+variable "instance_type" {
+    description = "what is the instance type"
+    default = "t2.micro"
+}
+variable "key_name" {
+    description = "my keypair name"
+    default = "terraformkeypair"
+}
+
+
+------------------------
+main.tf
+
+resource "aws_instance" "scopedindiavm" {
+  ami             = "${var.ami}"
+  instance_type   = "${var.instance_type}"
+  key_name        = "${var.key_name}"
+  security_groups = ["default"]
+  tags = {
+    name = "linuxvm"
+  }
+
+}

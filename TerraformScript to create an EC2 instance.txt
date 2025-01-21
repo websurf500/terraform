@@ -1,0 +1,42 @@
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+
+https://app.terraform.io/public/signup/account
+websurf500
+$ecureTerraform@123
+
+
+-------------------------------
+
+provider "aws" {
+  region = "ap-south-1"
+  access_key = ""
+  secret_key = ""  
+}
+resource "aws_instance" "scopedindiavm" {
+  ami = ""
+  instance_type = "t2.micro"
+  key_name = "mykeypair"
+  security_groups = ["default"]
+  tags = {
+    name = "linuxvm"
+  }
+   
+}
+
+---------------------------------
+
+provider "aws" {
+  region     = "ap-south-1"
+  access_key = "AKIAWOAVSUU7MZO24GGV"
+  secret_key = "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"
+}
+resource "aws_instance" "scopedindiavm" {
+  ami             = "ami-0fd05997b4dff7aac"
+  instance_type   = "t2.micro"
+  key_name        = "terraformkeypair"
+  security_groups = ["default"]
+  tags = {
+    name = "linuxvm"
+  }
+
+}

@@ -1,0 +1,26 @@
+Workspace
+
+# main.tf
+------------
+
+variable "instance_type" {
+    description = "it represents the type of instance"
+}
+resource "aws_instance" "scopedindiavm" {
+  ami             = "ami-0fd05997b4dff7aac"
+  instance_type   = var.instance_type
+  key_name        = "terraformkeypair"
+  security_groups = ["default"]
+  tags = {
+    Name = "linuxvmtvm"
+  }
+
+}
+
+
+output.tf
+--------
+
+output "ec2_public_ip" {
+    value = aws_instance.scopedindiavm.public_ip
+}
